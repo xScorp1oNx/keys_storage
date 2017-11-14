@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table class="itemListTable">
+        <h2 class="page-header">
+            Passwords storage
+            <a href="/admin/keys/add" class="BT editBT" style="float: right;">Add new key</a>
+        </h2>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Password</th>
+            <th>Url</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody id="tableTop">
+        {% if keys %}
+            {% for k in keys %}
+                <tr>
+
+                    <td class="tRow">
+                        <div>{{ k.description }}</div>
+                        <span><a class="links" href="/admin/keys/edit/id/{{ k.id }}"> {{ k.name }} </a> </span>
+                    </td>
+                    <td>
+                        <span> {{ k.password }} </span>
+                    </td>
+                    <td>
+                        <span> <a class="links" href="http://{{ k.url }}" target="_blank">{{ k.url }} </a></span>
+                    </td>
+                    <td class="noPadding">
+                        <div class="floatToRight">
+                            <a href="/admin/key/edit/{{ k.id }}" class="BT editBT">Edit</a>
+                            <a href="/admin/key/delete/{{ k.id }}" class="BT deleteBT">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+
+    </table>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+[09-Nov-2017 05:49:13 Europe/Paris] PHP Fatal error:  Uncaught PDOException: SQLSTATE[28000] [1045] Access denied for user 'c1_bip2_dbu'@'localhost' (using password: YES) in /home2/buythous/public_html/keys/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home2/buythous/public_html/keys/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=127....', 'c1_bip2_dbu', 'c05CQz@eDQi', Array)
+#1 /home2/buythous/public_html/keys/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(44): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'c1_bip2_dbu', 'c05CQz@eDQi', Array)
+#2 /home2/buythous/public_html/keys/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'c1_bip2_dbu', 'c05CQz@eDQi', Array)
+#3 /home2/buythous/public_html/keys/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home2/buythous/public_html/keys/vendor/doctrine/dbal/lib/Doctrine/DBAL/Con in /home2/buythous/public_html/keys/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[09-Nov-2017 21:52:53 Europe/Paris] PHP Fatal error:  Class 'AppBundle\Controller\PassControllerAction' not found in /home2/buythous/public_html/keys/src/AppBundle/Controller/HeadController.php on line 15

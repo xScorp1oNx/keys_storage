@@ -1,0 +1,5 @@
+# For security reasons, Option followsymlinks cannot be overridden.
+#Options +FollowSymLinks
+Options +SymLinksIfOwnerMatch
+RewriteEngine On
+RewriteRule ^(.*)style\.css$ $1style.php [NC,L]

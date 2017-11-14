@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h2 class="page-header">
+        Users
+        <a href="/admin/user/add" class="BT editBT" style="float: right;">Add user</a>
+
+    </h2>
+
+
+   <!--/.nav-collapse -->
+    <table class="itemListTable">
+        <thead>
+            <tr>
+                <th>Login</th>
+                <th>Email</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for u in user %}
+            <tr>
+                <td scope="row">{{u.username}}</td>
+                <td>{{u.email}}</td>
+                <td>{{u.role}}</td>
+                <td class="noPadding">
+                    <div class="floatToRight">
+                        <a href="/admin/user/edit/{{u.id}}" class="BT editBT">Edit</a>
+                        <a href="/admin/user/{{ u.id }}/delete" class="BT deleteBT">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+

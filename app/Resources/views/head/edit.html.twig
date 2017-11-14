@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <style>
+        .form_exp {
+            margin-top: 10px;
+            width: 90%;
+            margin-left: 5%;
+        }
+    </style>
+    <h2 class="page-header">Global configuration</h2>
+
+    <script src="/scripts/ckeditor/ckeditor.js"></script>
+    <form action="/admin/configuration" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="page_visible">for expert</label>
+            <input type="checkbox" id="page_visible" name="page_visible">
+        </div>
+
+        <div id="exp_start" class="form_exp" style="border-top-style: double; display: none;"></div>
+        <label id="exp_label" class="form_exp"  style="display: none;"></label>
+        <table class="itemListTable" id="exp_table" style="display: none;">
+            <tbody>
+                <tr>
+                    <td scope="row"><label for="body">Additional header elements:</label></td>
+                    <td scope="row"><textarea name="body" cols="60" rows="3">{{ head.0.body }}</textarea></td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div id="exp_end" class="form_exp" style="border-bottom-style: double; display: none;"></div>
+        <br>
+        <br>
+
+        <table class="itemListTable">
+            <label>Site name: </label>
+            <tbody>
+                <tr>
+                    <td scope="row"><label for="title">Site title</label></td>
+                    <td scope="row"><textarea name="title" cols="60" rows="3">{{ head.1.body }}</textarea></td>
+                </tr>
+                <tr>
+                    <td scope="row"><label for="meta_description">Meta Description</label></td>
+                    <td scope="row"><textarea name="meta_description" cols="60" rows="3">{{ head.2.body }}</textarea></td>
+                </tr>
+                <tr>
+                    <td scope="row"><label for="meta_keywords">Meta Keywords</label></td>
+                    <td scope="row"><textarea name="meta_keywords" cols="60" rows="3">{{ head.3.body }}</textarea></td>
+                </tr>
+                <tr>
+                    <td scope="row"><label for="meta_keywords">Robots</label></td>
+                    <td scope="row">
+                        <select id="robots" name="robots">
+                            <option value="index, follow" {% if head.4.body is defined and head.4.body == 'index, follow' %} selected="selected" {% endif %}>Index, Follow</option>
+                            <option value="noindex, follow" {% if head.4.body is defined and head.4.body == 'noindex, follow' %} selected="selected" {% endif %}>No index, follow</option>
+                            <option value="index, nofollow" {% if head.4.body is defined and head.4.body == 'index, nofollow' %} selected="selected" {% endif %}>Index, No follow</option>
+                            <option value="noindex, nofollow" {% if head.4.body is defined and head.4.body == 'noindex, nofollow' %} selected="selected" {% endif %}>No index, no follow</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <textarea name="site_name" rows="10" cols="80">
+                        {{ head.5.body | raw }}
+                    </textarea>
+                    <script>
+                        // Replace the <textarea id="editor1"> with a CKEditor
+                        // instance, using default configuration.
+                        CKEDITOR.replace( 'site_name', {
+
+                            //  language: 'pl',
+                        });
+                        CKEDITOR.on("site_name", function(event)
+                        {
+                            $("#cke_body").hide();
+                        });
+                    </script>
+                </tr>
+                <tr>
+                    <td>
+                            <input type="submit" name="submit" value="save" class="BT editBT halfWidth noPadding noMargin" />
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </form>
+
+    <script>
+        $( "#page_visible" ).click(function() {
+            if($("#page_visible").is(":checked")) {
+                $("#exp_table").show(500);
+                $("#exp_start").show(500);
+                $("#exp_label").show(500);
+                $("#exp_end").show(500);
+            } else {
+                $("#exp_table").hide(500);
+                $("#exp_start").hide(500);
+                $("#exp_label").hide(500);
+                $("#exp_end").hide(500);
+            }
+        });
+
+
+    </script>
+{% endblock %}
+
+

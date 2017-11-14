@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>{% block title %}Keys saver{% endblock %}</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="/styles/adminPanel.css" rel="stylesheet">
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="/styles/style_cms.css">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+
+<body>
+
+<!--<nav class="navbar navbar-inverse">-->
+<header class="divRelative fullWidth">
+    <div>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/admin/status">Keys saver</a>
+        </div>
+        {% if status.name is defined %}
+            <div  style="float: right;"><h6>{{ status.name }} &nbsp;
+                  <a href="/admin/logout"  style="float: right;"><ins>logout</ins></a></h6>
+            </div>
+        {% endif %}
+
+        {% if status.name is defined  and status.name == '' %}
+
+        {% endif %}
+        <div id="navbar" class="collapse navbar-collapse">
+        </div><!--/.nav-collapse -->
+    </div>
+</header>
+<!--</nav>-->
+<style>
+    .left_menu {
+        width: 15%;
+        margin: 0;
+        display: inline-block;
+        border: 1px solid #cdcdcd;
+        border-radius: 5px;
+    }
+    .left_menu ul {
+        padding: 10%;
+        list-style-type: none;
+    }
+    .left_menu ul li {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .container {
+        border: 1px solid #cdcdcd;
+        border-radius: 5px;
+        width: 84%;
+        margin: 0;
+        float: right;
+    }
+</style>
+
+    {% if app.user is not null %}
+        <!--<div class="left_menu">-->
+        <nav class="divRelative">
+            {% for role in app.user.roles if role == 'ROLE_ADMIN' %}
+                <ul>
+                    <li class="menu_buttom"><a class="links_menu" href="/admin/status">Main page</a></li>
+                    <li class="menu_buttom"><a class="links_menu" href="/admin/configuration">Global configuration</a></li>
+                    <li class="menu_buttom"><a class="links_menu" href="/admin/user">Users</a></li>
+                    <li class="menu_buttom"><a class="links_menu" href="/admin/history/1">History logged</a></li>
+                </ul>
+            {% endfor %}
+            <footer class="divRelative" style=" background-color: #f5ffef;">
+                Dmytro Ponomarov
+            </footer>
+        </nav>
+        <!--</div>-->
+    {% endif %}
+
+<div class="divRelative">
+    {#
+    <div id="breadcrumbs">
+        <a class="links" href="/admin/status">Strona główna </a>
+
+        {% if breadcrumbs is defined %}
+            {% for br in breadcrumbs %}
+                &#8658;
+                <a class="links" href="{{ br.link }}">{{ br.name }}</a>
+            {% endfor %}
+        {% endif %}
+    </div>
+    #}
+    {% block body %}{% endblock %}
+</div>
+
+<!-- /.container -->
+{% block javascripts %}
+<script>
+    $( document ).ready(function() {
+
+
+        elements = document.getElementsByClassName('links_menu');
+        for(i=0; i<elements.length; i++) {
+            current_url = window.location.href;
+            href= $(elements[i]).attr('href');
+
+            arr = href.split('/');
+            regex ='';
+            for (g=0;g<arr.length; g++) {
+                if (g == 1 || g == 2) {
+                    regex+= '\\';
+                    regex += '/' + arr[g];
+                }
+
+            }
+            regex+='';
+
+            str = window.location.href;
+
+            regex = new RegExp(regex);
+            
+            if (regex.test(str)) {
+
+                $(elements[i]).addClass('links_menu_selected');
+            } else {
+                $(elements[i]).removeClass('links_menu_selected');
+            }
+        }
+
+
+    });
+</script>
+{% endblock %}
+</body>
+</html>
+

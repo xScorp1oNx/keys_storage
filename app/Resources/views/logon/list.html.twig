@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <style>
+        .form_div {
+            border: 1px solid #cdcdcd;
+            border-radius: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .form_search {
+            margin-left: 15px;
+            padding: 10px;
+        }
+    </style>
+    <h2 class="page-header">
+        Log-in history
+    </h2>
+    <div class="form_div">
+        <form class="form_search" method="post" action="/admin/history/1">
+            <div class="advanced_query" style="width:100%;">
+                <div style="width:500px;" class="adv-filter-cont">
+                    <label for="query">query: </label>
+                    <input type="text" name="query" id="query" value="{% if search_word is defined %}{{ search_word }} {% endif %}" />
+                </div>
+            </div>
+            <div style="margin-top:10px;">
+                <input type="submit" name="submit" value="filter!" />
+            </div>
+
+        </form>
+
+    </div>
+    {% if results %}
+        {% if pagination %}
+            {{ pagination | raw }}
+        {% endif %}
+
+        <table class="itemListTable">
+
+            {% set count = 1 %}
+
+                <thead>
+                    <tr>
+                        <th>
+
+                        </th>
+                        <th>
+                            Name:
+                        </th>
+                        <th>
+                            E-mail:
+                        </th>
+                        <th>
+                            IP:
+                        </th>
+                        <th>
+                            Login date:
+                        </th>
+                        <th>
+                            Last active:
+                        </th>
+                    </tr>
+                </thead>
+            {% for r in results %}
+                <tbody>
+                    <tr>
+                        <td>{{ count }}</td>
+                        <td>{{ r.name }}</td>
+                        <td>{{ r.email }}</td>
+                        <td>{{ r.ip_address }}</td>
+                        <td>{{ r.login_date }}</td>
+                        <td>{{ r.recent_activity_date }}</td>
+                    </tr>
+                </tbody>
+                {% set count = count + 1 %}
+            {% endfor %}
+
+        </table>
+        {% if pagination %}
+            {{ pagination | raw }}
+        {% endif %}
+    {% endif %}
+
+
+{% endblock %}

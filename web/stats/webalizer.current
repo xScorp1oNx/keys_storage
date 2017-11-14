@@ -1,0 +1,243 @@
+# Webalizer V2.23-08 Incremental Data - 08/17/2017 21:05:31
+2017 8 17 21 5 31
+9160 8313 17 16 5 15 158153586 1478 30 0 0 0
+2 15 1256 3 17
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+3 1 2638 2 1 1 0 0
+1 1 1243 1 1 1 0 0
+0 0 0 0 0 0 0 0
+5 4 5797 1 4 1 0 0
+137 110 231630 2 25 2 0 0
+365 327 2818077 2 110 5 0 0
+41 36 746746 1 8 2 0 0
+4691 4137 85958430 3 713 6 0 0
+28 26 500278 1 4 1 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+12 3 14962 2 1 1 0 0
+3833 3635 67343480 5 603 6 0 0
+44 33 530305 2 8 4 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+1 0 679 0 0 0
+201 170 2670356 75 0 0
+2095 1942 37727878 353 0 0
+1063 906 17582083 151 0 0
+314 229 4739892 45 0 0
+1817 1710 32902717 295 0 0
+1749 1607 29718353 266 0 0
+1683 1549 30845078 248 0 0
+201 168 1452745 36 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+2 1 1959 1 0 0
+29 27 506049 4 0 0
+5 4 5797 4 0 0
+0 0 0 0 0 0
+0
+0
+0
+8313
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+415
+0
+0
+0
+0
+0
+0
+426
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+6
+0
+0
+0
+0
+0
+# -urls- 
+/flags/flags.png
+1 686 0 138996471 0 0 0 0
+/styles/style.php
+0 14 0 4746 0 0 0 0
+/styles/style.css
+0 789 0 2901547 0 0 0 0
+/logos/fblogo.svg
+0 711 0 782356 0 0 0 0
+/sidemenu_mobile.js
+0 276 0 174054 0 0 0 0
+/logos/youtubelogo.svg
+0 711 0 3367656 0 0 0 0
+/styles/cookie.svg
+0 40 0 248001 0 0 0 0
+/logos/googlepluslogo.svg
+0 711 0 1218909 0 0 0 0
+/sidemenu.js
+0 714 0 542170 0 0 0 0
+/cookies.js
+0 714 0 510499 0 0 0 0
+/styles/
+0 658 0 687194 1 15 0 0
+/
+0 799 0 6300770 28 1 0 0
+/AdditionalSettings.js
+0 694 0 649425 0 0 0 0
+/speechSynthesis.js
+0 496 0 479388 0 0 0 0
+/fontSizer.js
+0 4 0 3334 0 0 0 0
+/logos/twitterlogo.svg
+0 711 0 996561 0 0 0 0
+# End Of Table - urls
+# -sites- (monthly)
+83.6.54.203
+0 1 1 8391 1 1502796380 0 0
+/
+83.6.35.233
+0 15 14 253095 1 1503003930 0 0
+/styles/
+178.42.115.123
+0 4434 4065 85398159 4 1502379353 0 0
+/styles/
+107.167.108.172
+0 178 50 233167 2 1502891367 0 0
+/styles/
+87.250.224.66
+0 1 0 679 0 0 0 0
+-
+107.167.108.173
+0 18 5 20601 1 1502879698 0 0
+/styles/
+178.42.250.154
+0 5 4 5797 1 1502057957 0 0
+/
+95.49.211.126
+0 55 49 999700 3 1502278841 0 0
+/styles/
+178.42.79.50
+0 28 26 500278 1 1502446101 0 0
+/styles/
+107.167.108.74
+0 231 64 519597 1 1502363091 0 0
+/
+5.45.207.76
+0 1 0 679 0 0 0 0
+-
+83.144.85.62
+0 4094 4008 70089270 10 1502981298 0 0
+/styles/
+107.167.108.72
+0 84 23 113760 2 1502893962 0 0
+/styles/
+128.68.218.122
+0 1 0 640 1 1502096058 0 0
+-
+107.167.108.61
+0 11 2 6571 0 0 0 0
+-
+178.42.102.59
+0 2 1 1959 1 1501792683 0 0
+/
+176.193.231.146
+0 1 1 1243 1 1501841392 0 0
+/
+# End Of Table - sites (monthly)
+# -sites- (daily)
+83.6.35.233
+0 15 14 253095 1 1503003930 0 0
+/styles/
+83.144.85.62
+0 29 19 277210 3 1502981298 0 0
+/styles/
+# End Of Table - sites (daily)
+# -referrers- 
+http://gpokorny.hbz.pl/styles/style.php
+1 8
+- (Direct Request)
+0 752
+http://gpokorny.hbz.pl/styles/style.css
+1 1399
+http://gpokorny.hbz.pl/
+1 6999
+http://yandex.ru/clck/jsredir
+0 2
+# End Of Table - referrers
+# -agents- 
+Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Mobile Saf
+0 3176
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36 OPR/46.0.2597.
+0 24
+Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Mobile Saf
+0 144
+Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Mobile Sa
+0 1755
+Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0; Touch; MASMJS)
+0 1
+Mozilla/5.0 (Linux; U; Android 7.1.1; Pixel XL Build/NMF26V; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/52
+0 524
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.78 Safari/537.36 OPR/47.0.2
+0 15
+Mozilla/5.0 (iPad; CPU OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1
+0 13
+Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CL
+0 1
+Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)
+0 2
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36
+0 14
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36
+0 710
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36 OPR/46.0.
+0 2593
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36
+0 175
+Mozilla/5.0 (Linux; Android 7.1.1; Pixel XL Build/NMF26V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Mobile S
+0 13
+# End Of Table - agents
+# -search strings- 
+# End Of Table - search strings
+# -usernames- 
+# End Of Table - usernames

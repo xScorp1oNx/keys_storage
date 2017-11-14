@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2 class="page-header">Are you sure would like delete: "<span style="color: #66dd66">{{ element_name }}</span>"?</h2>
+
+    <form action="{{ link_action }}" method="post" enctype="multipart/form-data">
+    <div>
+        <input name="submit" type="submit" value="TAK" class="btn btn-primary" style="float: left; background-color: lawngreen; width: 70px;"/>
+    </div>
+    <div>
+        <input name="submit" type="submit" value="NIE" class="btn btn-primary" style="float: left; background-color: orangered; width: 70px; margin-left: 10px;"/>
+    </div>
+    </form>
+{% endblock %}
