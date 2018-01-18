@@ -78,7 +78,7 @@ class LogonController extends PassControllerAction
 
         $connection = $em->getConnection();
         //$statement = $connection->prepare("SELECT m.name, a.name FROM modules m LEFT JOIN group_aliases ga ON m.alias_id=ga.modules_id LEFT JOIN alias a ON a.id = ga.alias_id");
-        $statement = $connection->prepare("SELECT l.*, u.name, u.email FROM log_on l LEFT JOIN user u ON u.id=l.user_id " . $sSql . " LIMIT " . $step . ", " . $page_limit );
+        $statement = $connection->prepare("SELECT l.*, u.name, u.email FROM log_on l LEFT JOIN user u ON u.id=l.user_id " . $sSql . " ORDER BY l.login_date DESC LIMIT " . $step . ", " . $page_limit );
         $statement->execute();
         $results = $statement->fetchAll();
         $aData = array(

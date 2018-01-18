@@ -14,7 +14,7 @@
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     
-    <link href="/styles/adminPanel.css" rel="stylesheet">
+    <link href="/styles/adminPanel.css?t={{ "now"|date("mdYHis") }}" rel="stylesheet">
     {% block stylesheets %}
         <link rel="stylesheet" type="text/css" href="/styles/style_cms.css">
     {% endblock %}
@@ -36,8 +36,15 @@
             <a class="navbar-brand" href="/admin/status">Keys saver</a>
         </div>
         {% if status.name is defined %}
-            <div  style="float: right;"><h6>{{ status.name }} &nbsp;
-                  <a href="/admin/logout"  style="float: right;"><ins>logout</ins></a></h6>
+            <div  style="float: right;">
+                <h6>
+
+                    {{ status.name }} &nbsp;
+                    |
+                    <a href="/admin/user/profile"><ins> Profile</ins></a>
+                    | &nbsp;
+                  <a href="/admin/logout"  style="float: right;"><ins> logout</ins></a>
+                </h6>
             </div>
         {% endif %}
 
@@ -84,6 +91,8 @@
                     <li class="menu_buttom"><a class="links_menu" href="/admin/configuration">Global configuration</a></li>
                     <li class="menu_buttom"><a class="links_menu" href="/admin/user">Users</a></li>
                     <li class="menu_buttom"><a class="links_menu" href="/admin/history/1">History logged</a></li>
+                    <li class="menu_buttom"><a class="links_menu" href="/admin/keys">Password storage</a></li>
+
                 </ul>
             {% endfor %}
             <footer class="divRelative" style=" background-color: #f5ffef;">
@@ -95,18 +104,13 @@
 
 <div class="divRelative">
     {#
-    <div id="breadcrumbs">
-        <a class="links" href="/admin/status">Strona główna </a>
-
-        {% if breadcrumbs is defined %}
-            {% for br in breadcrumbs %}
-                &#8658;
-                <a class="links" href="{{ br.link }}">{{ br.name }}</a>
-            {% endfor %}
-        {% endif %}
+    <div>
+        <img src="http://test7.hbz.pl/cache/keys.buythousandthings.com/123.png?v=12" style="width: 1000px;">
     </div>
     #}
+
     {% block body %}{% endblock %}
+    
 </div>
 
 <!-- /.container -->

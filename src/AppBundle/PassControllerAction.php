@@ -16,6 +16,29 @@ class PassControllerAction extends Controller
         print_r($array); die($text);
     }
 
+    function encode($unencoded,$key){
+        $string=base64_encode($unencoded);
+
+        $arr=array();
+        $x=0;
+        $newstr = '';
+        while ($x++< strlen($string)) {
+            $arr[$x-1] = md5(md5($key.$string[$x-1]).$key);
+            $newstr = $newstr.$arr[$x-1][3].$arr[$x-1][6].$arr[$x-1][1].$arr[$x-1][2];
+        }
+        return $newstr;
+    }
+
+    function decode($encoded, $key){
+        $strofsym="qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM=";
+        $x=0;
+        while ($x++<= strlen($strofsym)) {
+            $tmp = md5(md5($key.$strofsym[$x-1]).$key);
+            $encoded = str_replace($tmp[3].$tmp[6].$tmp[1].$tmp[2], $strofsym[$x-1], $encoded);
+        }
+        return base64_decode($encoded);
+    }
+
     public function displayPaginationBelow($page, $per_page, $total, $page_url){
 
         $adjacents = "2";
@@ -32,7 +55,7 @@ class PassControllerAction extends Controller
         if($setLastpage > 1)
         {
             $setPaginate .= "<ul class='setPaginate'>";
-            $setPaginate .= "<p class='setPage'>Strona $page z $setLastpage</p>";
+            $setPaginate .= "<p class='setPage'>Page $page in $setLastpage</p>";
             if ($setLastpage < 7 + ($adjacents * 2))
             {
                 for ($counter = 1; $counter <= $setLastpage; $counter++)

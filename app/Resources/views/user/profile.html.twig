@@ -1,17 +1,12 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-    <div class="page-header">
-        <div class="row">
-            <div class="col-sm-6">
-                <h1>
-                    Your profile
-                </h1>
-            </div>
-        </div>
-    </div>
-
-    {{ form(form) }}
-
+    <h2 class="page-header">Profile</h2>
+    {% if error_info is defined %}
+        <div class="error_info">{{ error_info }}</div>
+    {% endif %}
+    {{form_start(form)}}
+    {{form_widget(form)}}
+    {{form_end(form)}}
 {% endblock %}

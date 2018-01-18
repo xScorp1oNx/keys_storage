@@ -4,7 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
 use AppBundle\PassControllerAction;
-use AppBundle\Form\Type\UserType;
+use AppBundle\Form\Type\UserProfileType;
 use AppBundle\Form\Type\UseraddType;
 use AppBundle\Form\Type\UsereditType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -24,7 +24,7 @@ class UserController extends PassControllerAction
         $this->_updateActivity();
         $breadcrumbs = array(
             '0' => array(
-                'name' => 'Użytkowniki',
+                'name' => 'Users',
                 'link' => '/admin/user'
             ),
         );
@@ -56,6 +56,7 @@ class UserController extends PassControllerAction
             $password = $this->get('security.password_encoder')
                 ->encodePassword($newUser, $newUser->getPassword());
             $newUser->setPassword($password);
+            $newUser->setPasswordHash(sha1($form['password']->getData()));
             // 4) save the User
             $em = $this->getDoctrine()->getManager();
             $em->persist($newUser);
@@ -63,7 +64,7 @@ class UserController extends PassControllerAction
 
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user
-            $this->addFlash('Informacja', 'Urzytkownik dodany');
+            $this->addFlash('Information', 'User added');
             return $this->redirect('/admin/user');
         }
 
@@ -82,10 +83,10 @@ class UserController extends PassControllerAction
         $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($id);
         if(!$user) {
             return $this->render('error/error.html.twig', array(
-                'message' => 'Użytkownika z id: "' .$id . '" nie znaleziono.',
+                'message' => 'User => id: "' .$id . '" not found.',
                 'status' => $user,
                 'link_action' => '/admin/modules',
-                'link_name' => 'Przejdź do listy użytkowników',
+                'link_name' => 'Go to the users list',
             ));
         }
         $user->setName($user->getName());
@@ -115,7 +116,7 @@ class UserController extends PassControllerAction
 
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user
-            $this->addFlash('Informacja', 'Urzytkownik zmieniony');
+            $this->addFlash('Information', 'User edited');
             return $this->redirect('/admin/user');
         }
 
@@ -140,10 +141,105 @@ class UserController extends PassControllerAction
         $em->remove($user);
         $em->flush();
 
-        $this->addFlash('notice', 'Użytkownik poprawnie usunięty.');
+        $this->addFlash('notice', 'User deleted.');
         return $this->redirect('/admin/user');
     }
 
+    /**
+     * @Route("/admin/user/profile", name="user-profile")
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function profileAction(Request $request)
+    {
+        $User = $this->getUser();
+        $this->_updateActivity();
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('AppBundle:User')->find($User->getId());
+
+        $pass = $user->getPassword();
+        $pass_hash = $user->getPasswordHash();
+
+        $form = $this->createForm(UserProfileType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // 3) Encode the password (you could also do this via Doctrine listener)
+            if ($form['password']->getData() != ''){
+                $password = $this->get('security.password_encoder')
+                    ->encodePassword($user, $user->getPassword());
+                $user->setPassword($password);
+            } else{
+                // $user->setPassword($user->getPassword());
+                $user->setPassword($pass);
+            }
+            if ($form['password_hash']->getData() != ''){
+
+                if ($form->get('old_password_key')->getData() == '') {
+                    $form = $this->createForm(UserProfileType::class, $form->getData());
+                    $form->handleRequest($request);
+                    return $this->render('user/profile.html.twig', array(
+                        'form' => $form->createView(),
+                        'status' => $User,
+                        'error_info' => 'The old key field cannot be empty!'));
+                } else {
+                   // $this->debug(sha1($form->get('old_password_key')->getData()) . '    ' . $pass_hash, '  dsa');
+                    if (sha1($form->get('old_password_key')->getData()) != $pass_hash) {
+                        $form = $this->createForm(UserProfileType::class, $form->getData());
+                        $form->handleRequest($request);
+                        return $this->render('user/profile.html.twig', array(
+                            'form' => $form->createView(),
+                            'status' => $User,
+                            'error_info' => 'Invalid key!'));
+                    }
+                }
+                $flag = true;
+
+                $hash = sha1($form['password_hash']->getData());
+
+                $user->setPasswordHash($hash);
+
+
+            } else {
+                $user->setPasswordHash($pass);
+            }
+
+
+            $em = $this->getDoctrine()->getManager();
+            if ($flag == true) {
+
+                $oRows = $this->getDoctrine()->getRepository('AppBundle:Keys')->findBy(array('user_id' => $user->getId()),array('name' => 'ASC'));
+                if (count($oRows) > 0) {
+
+                    foreach ($oRows as $key) {
+
+                        $hash_decode = $this->decode($key->getPassword(),$form->get('old_password_key')->getData());
+
+                        $new_hash_encode = $this->encode($hash_decode, $form['password_hash']->getData());
+
+                        $key->setPassword($new_hash_encode);
+
+
+                        $em->persist($key);
+                        $em->flush();
+                    }
+                }
+
+            }
+            // 4) save the User
+
+            $em->persist($user);
+            $em->flush();
+
+            // ... do any other work - like sending them an email, etc
+            // maybe set a "flash" success message for the user
+            $this->addFlash('Information', 'User has been changed');
+            return $this->redirect('/admin/user/profile');
+        }
+
+        return $this->render('user/profile.html.twig', array('form' => $form->createView(), 'status' => $User));
+        //$this->debug($user, 'dasdsad');
+    }
 
 
 

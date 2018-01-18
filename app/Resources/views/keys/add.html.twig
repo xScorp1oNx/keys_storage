@@ -1,0 +1,10 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2 class="page-header">Add new key</h2>
+    {{form_start(form)}}
+    {{form_widget(form)}}
+    {{form_end(form)}}
+    <a href="/admin/keys" class="BT deleteBT">Cancel</a>
+{% endblock %}

@@ -39,6 +39,11 @@ class User implements UserInterface
      */
     protected $password;
 
+    /**
+     * @ORM\Column(type="string", length=64)
+     */
+    protected $password_hash;
+
 
     public function eraseCredentials()
     {
@@ -104,4 +109,28 @@ class User implements UserInterface
         return null;
     }
 
+
+    /**
+     * Set passwordHash
+     *
+     * @param string $passwordHash
+     *
+     * @return User
+     */
+    public function setPasswordHash($passwordHash)
+    {
+        $this->password_hash = $passwordHash;
+
+        return $this;
+    }
+
+    /**
+     * Get passwordHash
+     *
+     * @return string
+     */
+    public function getPasswordHash()
+    {
+        return $this->password_hash;
+    }
 }

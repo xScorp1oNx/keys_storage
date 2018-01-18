@@ -6,11 +6,18 @@
             Passwords storage
             <a href="/admin/keys/add" class="BT editBT" style="float: right;">Add new key</a>
         </h2>
+        {% if error_info is defined %}
+        <div class="error_info">{{ error_info }}</div>
+        {% endif %}
+        <form action="/admin/keys" method="post">
+            <input type="password" name="key" value="" style="float: left;" placeholder="Enter your key!">
+            <input type="submit" name="submit" value="open password" class="BT editBT" style="height: 25px;line-height: 0px;">
+        </form>
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Password</th>
-            <th>Url</th>
+            <th style="width: 25%;">Login</th>
+            <th style="width: 25%;">Password</th>
+            <th style="width: 30%;">Url</th>
             <th></th>
         </tr>
         </thead>
@@ -21,18 +28,18 @@
 
                     <td class="tRow">
                         <div>{{ k.description }}</div>
-                        <span><a class="links" href="/admin/keys/edit/id/{{ k.id }}"> {{ k.name }} </a> </span>
+                        <span><a class="links" href="/admin/keys/edit/{{ k.id }}"> {{ k.name }} </a> </span>
                     </td>
                     <td>
-                        <span> {{ k.password }} </span>
+                        <span>{% if open is defined %} {{ k.password }} {% else %} &bull;&bull;&bull;&bull;&bull;&bull;&bull; {% endif %} </span>
                     </td>
                     <td>
                         <span> <a class="links" href="http://{{ k.url }}" target="_blank">{{ k.url }} </a></span>
                     </td>
                     <td class="noPadding">
                         <div class="floatToRight">
-                            <a href="/admin/key/edit/{{ k.id }}" class="BT editBT">Edit</a>
-                            <a href="/admin/key/delete/{{ k.id }}" class="BT deleteBT">Delete</a>
+                            <a href="/admin/keys/edit/{{ k.id }}" class="BT editBT">Edit</a>
+                            <span class="BT deleteBT delete_bt"  data-link="/admin/keys/delete/{{ k.id }}" style="cursor: pointer;" >Delete</span>
                         </div>
                     </td>
                 </tr>
@@ -41,5 +48,12 @@
         </tbody>
 
     </table>
+<script>
+    $( ".delete_bt" ).click(function() {
+        if (confirm("Do you want to remove this password")) {
+            location.href = $(this).attr("data-link");
+        }
 
+    });
+</script>
 {% endblock %}
